@@ -17,10 +17,8 @@ namespace VevoApp
         {
             Artist krzysztofG = new Artist();
             krzysztofG.Nick = "Gonciarz";
-
             TestAlbum testAlbum = new TestAlbum();
             testAlbum.Artist = null;
-
             Album firstAlbum = new Album();
             firstAlbum.Name = "Kolendy 2020";
             firstAlbum.PublishYear = 2020;
@@ -29,8 +27,6 @@ namespace VevoApp
 
             Song track1 = new Song("Bymckfszy", krzysztofG, 13);
             var result = firstAlbum.AddSong(track1);
-
-
 
             Assert.IsTrue(result);
         }

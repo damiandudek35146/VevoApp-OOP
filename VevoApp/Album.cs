@@ -43,13 +43,18 @@ namespace VevoApp
         }
 
         /// <summary>
-        /// Method for checking if the songs exists already
+        /// Method for checking if the same songs exists already
         /// </summary>
         /// <param name="song">The song to be checked</param>
-        /// <returns>True if the song exists inside the internal collection</returns>
+        /// <returns>True if the same song exists inside the internal collection</returns>
         private bool SongAlreadyExists(Song song)
         {
-            return Songs.Select(p => p.Artist == song.Artist && p.LongTime == song.LongTime && p.Title == song.Title).Count() > 0;
+            if (Songs != null)
+            {
+                return Songs.Select(p => p.Artist == song.Artist && p.LongTime == song.LongTime && p.Title == song.Title).Count() > 0;
+            }
+            return true;
+           
             
         }
     }

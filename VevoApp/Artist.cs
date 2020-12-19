@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace VevoApp
 {
@@ -9,20 +10,42 @@ namespace VevoApp
         public string Nick { get; set; }
         public List<Album> Albums { get; set; }
 
-        public bool AddAlbum(Album _album)
+        public Artist()
         {
-
-            foreach (Album a in Albums)
+            this.Nick = "";
+            this.Albums = new List<Album>();
+        }
+        /// <summary>
+        /// Method for adding new albums
+        /// </summary>
+        /// <param name="_album">The album to be added</param>
+        /// <returns>True if the album was added</returns>
+        public bool AddAlbum(Album album)
+        {
+            if(AlbumAlreadyExists(album))
             {
-                // Chcking if new album not exist in albums
-                if (_album.Name != a.Name && _album.PublishYear != a.PublishYear)
-                {
-                    Albums.Add(_album);
-                    
-                }
-                
+                this.Albums.Add(album);
+                return true;
+
             }
-            return false;
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Method for checking if the same album exists already
+        /// </summary>
+        /// <param name="album">The album to be checked</param>
+        /// <returns>True if the same album exists inside the internal collection</returns>
+        private bool AlbumAlreadyExists(Album album)
+        {
+            if (Albums != null)
+            {
+                return Albums.Select(p => p.Name == album.Name && p.PublishYear == album.PublishYear && p.Artist == album.Artist && p.Songs == album.Songs).Count() > 0;
+            }
+            return true;
+
         }
     }
 }

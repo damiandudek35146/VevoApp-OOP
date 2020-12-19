@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VevoApp;
 
 namespace NUnitTestVevoApp
 {
@@ -13,7 +14,7 @@ namespace NUnitTestVevoApp
 
         public TestAlbum()
         {
-            this.Artist = ""
+            this.Artist.Nick = "";
         }
     }
 }
